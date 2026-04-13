@@ -30,5 +30,7 @@ var app = builder.Build();
 app.UseCors("frontend");
 app.UseAuthorization();
 app.MapControllers();
+app.MapGet("/", () => "API is running");
 
-app.Run();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Run($"http://0.0.0.0:{port}");
